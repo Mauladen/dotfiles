@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-iDIR="$HOME/.config/mako/icons"
+iDIR="$HOME/.config/swaync/icons"
 
 # Get Volume
 get_volume() {

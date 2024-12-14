@@ -1,0 +1,9 @@
+gtk-titlebar = false
+
+theme = catppuccin-mocha
+
+font-family = "JetBrainsMono Nerd Font"
+font-size = 16
+
+keybind = ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard

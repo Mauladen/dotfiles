@@ -25,26 +25,23 @@ _installPackages() {
         return;
     fi;
     printf "Пакет не найден :\n%s\n" "${toInstall[@]}";
-    sudo pacman --noconfirm -S "${toInstall[@]}";
+    sudo pacman -S --noconfirm "${toInstall[@]}";
 }
 
 _installPackagesYay() {
     toInstall=();
     for pkg; do
-        if [[ $(_isInstalledYay "${pkg}") == 0 ]]; then
+        if [[ $(_isInstalled "${pkg}") == 0 ]]; then
             echo ":: ${pkg} уже установлен.";
             continue;
         fi;
         toInstall+=("${pkg}");
     done;
-
     if [[ "${toInstall[@]}" == "" ]] ; then
-        # echo "All packages are already installed.";
         return;
     fi;
-
     printf "Пакет не найден :\n%s\n" "${toInstall[@]}";
-    yay --noconfirm -S "${toInstall[@]}";
+    yay -S --noconfirm "${toInstall[@]}";
 }
 
 # Install Yay
@@ -56,11 +53,11 @@ _installYay() {
         _installPackagesPacman "base-devel"
         SCRIPT=$(realpath "$0")
         temp_path=$(dirname "$SCRIPT")
-        echo $temp_path
-        git clone https://aur.archlinux.org/yay-git.git ~/yay-git
-        cd ~/yay-git
-        makepkg -si
+        git clone https://aur.archlinux.org/yay-bin.git ~/yay-bin
+        cd ~/yay-bin
+        makepkg -rsi --noconfirm
         cd $temp_path
+        rm -Rf ~/yay-bin/
         echo "yay был успешно установлен."
     fi
 }

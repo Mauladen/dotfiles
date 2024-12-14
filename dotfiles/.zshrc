@@ -1,9 +1,29 @@
-export ZSH="$HOME/.oh-my-zsh"
+#            _
+#    _______| |__  _ __ ___
+#   |_  / __| '_ \| '__/ __|
+#  _ / /\__ \ | | | | | (__
+# (_)___|___/_| |_|_|  \___|
+#
 
-ZSH_THEME=""
+# Вы можете определить свою пользовательскую конфигурацию, добавляя
+# файлы в ~/.config/zshrc
+# или создавая папку ~/.config/zshrc/custom
+# с копиями файлов из ~/.config/zshrc
+# -----------------------------------------------------
 
-plugins=(git zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting)
+# -----------------------------------------------------
+# Загрузка модульной конфигурации
+# -----------------------------------------------------
+for f in ~/.config/zshrc/*; do
+    if [ ! -d $f ] ;then
+        c=`echo $f | sed -e "s=.config/zshrc=.config/zshrc/custom="`
+        [[ -f $c ]] && source $c || source $f
+    fi
+done
 
-source $ZSH/oh-my-zsh.sh
-
-eval "$(starship init zsh)"
+# -----------------------------------------------------
+# Загрузка единственного файла настройки (если существует)
+# -----------------------------------------------------
+if [ -f ~/.zshrc_custom ] ;then
+    source ~/.zshrc_custom
+fi
