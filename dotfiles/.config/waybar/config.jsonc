@@ -58,8 +58,8 @@
     "format": " {}",
     "format-en": "English",
     "format-ru": "Русский",
-    "keyboard-name": "rdr-rainy-75",
-    "on-click": "hyprctl switchxkblayout rdr-rainy-75 next"
+    "keyboard-name": "foostan-corne",
+    "on-click": "hyprctl switchxkblayout foostan-corne next"
   },
   "custom/powermenu": {
     "format": "",
@@ -91,7 +91,7 @@
     "max-length": 10,
     "format-alt-click": "click-right",
     "format-alt": " {usage}%",
-    "on-click": "foot -F -T btop sh -c 'btop'"
+    "on-click": "ghostty -e btop"
   },
   "pulseaudio": {
     "format": "{icon}",

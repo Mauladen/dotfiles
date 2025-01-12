@@ -84,24 +84,18 @@ done
 # -----------------------------------------------------
 _installPackagesPacman "${installer_packages[@]}";
 
-# Создать папку Downloads если не существует
-if [ ! -d ~/Downloads ] ;then
-    mkdir ~/Downloads
-    echo ":: Папка Downloads создана"
-fi
-
-# Перейти в директорию Downloads
-cd ~/Downloads
+# Перейти в домашнюю директорию
+cd ~
 
 # Удалить существующую папку
-if [ -d ~/Downloads/hyprdots ] ;then
-    rm -rf ~/Downloads/hyprdots
-    echo ":: Существующая папка установки удалена"
+if [ -d ~/hyprdots ] ;then
+    rm -rf ~/hyprdots
+    echo ":: Существующая папка hyprdots удалена"
 fi
 
 # Клонировать пакеты
 git clone --depth 1 https://github.com/Mauladen/hyprdots.git
-echo ":: Установочные файлы клонированы в папку Downloads"
+echo ":: Файлы конфигураций склонированы в домашнюю директорию"
 
 # Перейти в папку
 cd hyprdots

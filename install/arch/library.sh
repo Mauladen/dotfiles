@@ -38,7 +38,6 @@ _installPackagesYay() {
         toInstall+=("${pkg}");
     done;
     if [[ "${toInstall[@]}" == "" ]] ; then
-        # echo "All packages are already installed.";
         return;
     fi;
     printf "Пакет не найден :\n%s\n" "${toInstall[@]}";
@@ -54,11 +53,11 @@ _installYay() {
         _installPackagesPacman "base-devel"
         SCRIPT=$(realpath "$0")
         temp_path=$(dirname "$SCRIPT")
-        echo $temp_path
-        git clone https://aur.archlinux.org/yay-git.git ~/yay-git
-        cd ~/yay-git
-        makepkg -si
+        git clone https://aur.archlinux.org/yay-bin.git ~/yay-bin
+        cd ~/yay-bin
+        makepkg -rsi --noconfirm
         cd $temp_path
+        rm -Rf ~/yay-bin/
         echo "yay был успешно установлен."
     fi
 }

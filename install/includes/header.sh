@@ -12,6 +12,5 @@ cat <<"EOF"
 
 Пакет настроек Hyprdots
 EOF
-echo "Версия: $version"
 echo -e "${NONE}"
 

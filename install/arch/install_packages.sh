@@ -25,7 +25,7 @@ packages=(
     waybar
     rofi-wayland
     hyprlock
-    foot
+    ghostty
     swaync
     xdg-desktop-portal-hyprland
     swww
@@ -68,6 +68,7 @@ packages_aur=(
   fnm
   vkteams-bin
   hunspell-ru
+  vial-appimage
 )
 
 _installPackages "${packages[@]}";
