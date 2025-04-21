@@ -1970,7 +1970,7 @@ menu {
   background-color: #232634;
   background-clip: border-box;
   border-radius: 12px;
-  border: 1px solid #cba6f7;
+  /* border: 1px solid $primary; */
 }
 
 .csd menu {
@@ -3631,27 +3631,32 @@ messagedialog .dialog-action-box .linked:not(.vertical) > button.destructive-act
 }
 
 .csd filechooser {
-  background-color: #313244;
+  background-color: #1e1e2e;
   border-radius: 0 0 12px 12px;
 }
 
 filechooser .dialog-action-box {
-  border-top: 1px solid rgba(239, 241, 245, 0.12);
+  border-top: 1px solid transparent;
+}
+
+filechooser treeview.view header > button {
+  background-color: #181825;
 }
 
 filechooser #pathbarbox {
-  border-bottom: 1px solid rgba(239, 241, 245, 0.12);
-  background-color: #313244;
+  background-color: #181825;
+  border-radius: 12px 12px 0 0;
+  margin: 0 4px;
 }
 
 filechooser stack.view {
   background-color: transparent;
-  padding: 4px;
+  padding: 0 4px;
 }
 
 filechooser stack.view scrolledwindow {
-  background-color: transparent;
-  border-radius: 0 0 12px 0;
+  background-color: #181825;
+  border-radius: 0 0 12px 12px;
 }
 
 filechooser stack.view scrolledwindow list {
@@ -3674,6 +3679,12 @@ filechooser stack.view frame > border {
 
 filechooser paned > separator {
   background: none;
+}
+
+filechooser paned box.vertical {
+  background-color: #181825;
+  border-radius: 12px;
+  margin: 0 6px 0 1px;
 }
 
 /***********
@@ -3739,7 +3750,7 @@ stacksidebar.sidebar row > label {
  * File chooser *
  ****************/
 placessidebar.sidebar {
-  margin: 6px;
+  margin: 0 0 0 4px;
   padding: 0;
 }
 
@@ -3761,7 +3772,8 @@ placessidebar.sidebar row {
 }
 
 placessidebar.sidebar row:hover, placessidebar.sidebar row:active {
-  background-color: rgba(239, 241, 245, 0.04);
+  /* background-color: if($variant == 'light', rgba($base, 0.4), $fill); */
+  background-color: alpha(currentColor, 0.08);
   color: #cba6f7;
 }
 
@@ -3770,8 +3782,9 @@ placessidebar.sidebar row > revealer {
 }
 
 placessidebar.sidebar row:selected {
+  /* background-color: if($variant == 'light', rgba($base, 0.4), $fill); */
+  background-color: alpha(currentColor, 0.08);
   color: #cba6f7;
-  background-color: rgba(239, 241, 245, 0.04);
   font-weight: 500;
 }
 
@@ -4216,7 +4229,7 @@ button.titlebutton:not(.suggested-action):not(.destructive-action) {
   min-height: 22px;
   min-width: 22px;
   padding: 0;
-  margin: 0 2px;
+  margin: 0 0px;
   border-radius: 9999px;
 }
 
@@ -5878,14 +5891,24 @@ window.background > box.vertical > box.horizontal > frame > border {
 }
 
 window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list {
-  border-radius: 12px;
+  /* border-radius: $corner-radius; */
   margin: 0 6px 6px;
-  background-color: #e6e9ef;
-  color: rgba(30, 30, 46, 0.87);
+  background-color: #1e1e2e;
+  color: #eff1f5;
 }
 
-window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row, window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row:hover, window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row:active, window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row:selected {
-  color: rgba(30, 30, 46, 0.87);
+window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row {
+  padding: 0 2px;
+  margin: 2px 0;
+  border-radius: 12px;
+}
+
+window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row:selected, window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row:hover {
+  color: #cba6f7;
+}
+
+window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row, window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list > row:active {
+  color: #eff1f5;
 }
 
 window.background > box.vertical > box.horizontal > stack > widget > notebook.frame {
@@ -6389,11 +6412,13 @@ window.background.chromium treeview.view button {
 }
 
 window.background.chromium menu {
+  background-color: #232634;
   border-color: #3e3e5f;
 }
 
 window.background.chromium menu menuitem {
   border-radius: 0;
+  background-color: rgba(239, 241, 245, 0.04);
 }
 
 tooltip.background.chromium {
@@ -6633,6 +6658,27 @@ window.background.csd > box.vertical > overlay > stack > box.vertical > box.hori
 window.background.csd > box.vertical > overlay > stack > box.vertical > box.horizontal > revealer > stack > scrolledwindow > viewport.frame > list > row.activatable,
 window.background.csd > box.vertical > overlay > stack > box.vertical > box.horizontal > revealer > stack > box.vertical > stack > scrolledwindow > viewport.frame > list > row.activatable {
   border-radius: 12px;
+}
+
+dialog-host > floating-sheet > sheet > widget.response-area {
+  padding: 6px !important;
+}
+
+window.background:not(.csd):not(.solid-csd) > button:not(:hover):not(:active):not(:checked):not(:disabled):not(.flat) {
+  /* background-color: if($variant == 'light', $grey-100, $grey-900); */
+  background-color: #1e1e2e;
+}
+
+window.background:not(.csd) > box
+> widget
+> widget
+> widget
+> widget
+> widget
+> widget
+> widget
+> scrolledwindow entry:focus {
+  background-color: #292938;
 }
 
 /*********

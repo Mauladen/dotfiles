@@ -47,8 +47,6 @@ packages=(
     tela-circle-icon-theme-dracula
     nwg-look
     kvantum
-    firefox
-    firefox-i18n-ru
     telegram-desktop
     qbittorrent
     obsidian
@@ -58,17 +56,19 @@ packages=(
     fzf
     dex
     wf-recorder
+    hyprpolkitagent
 )
 
 packages_aur=(
   visual-studio-code-bin
-  bibata-cursor-theme
-  hyprpolkitagent-bin
+  bibata-cursor-theme-bin
   wlogout
-  fnm
+  fnm-bin
+  cursor-bin
   vkteams-bin
   hunspell-ru
   vial-appimage
+  zen-browser-bin
 )
 
 _installPackages "${packages[@]}";
