@@ -1,14 +1,7 @@
 #!/bin/bash
 
-# Проверка установлен ли fnm
-if ! command -v fnm &>/dev/null; then
-    echo ":: fnm не установлен. Пропускаю настройку."
-    exit 0
-fi
-
-packages=(
-  fnm-bin
-)
+# Подключаем библиотеку функций
+source install/arch/library.sh
 
 echo -e "${GREEN}"
 cat <<"EOF"
@@ -19,7 +12,25 @@ cat <<"EOF"
 EOF
 echo -e "${NONE}"
 echo
-if gum confirm "Хотите настроить fnm?"; then
+
+# Проверяем установлен ли fnm
+if ! command -v fnm &>/dev/null; then
+    if gum confirm "fnm не установлен. Установить сейчас?"; then
+        echo ":: Установка fnm через yay..."
+        _installPackagesYay "fnm-bin"
+
+        # Проверяем успешность установки
+        if ! command -v fnm &>/dev/null; then
+            echo ":: Ошибка: fnm не был установлен." >&2
+            exit 1
+        fi
+    else
+        echo ":: Установка fnm пропущена. Пропускаю настройку."
+        exit 0
+    fi
+fi
+
+if gum confirm "Хотите настроить Node.js LTS и corepack?"; then
     echo ":: Установка последней LTS версии Node.js, включение corepack и настройка по умолчанию..."
     fnm install --lts
     fnm exec lts-latest -- corepack enable
@@ -28,5 +39,6 @@ if gum confirm "Хотите настроить fnm?"; then
     echo ":: Node.js LTS и corepack настроены."
     fnm list
 else
-    echo ":: Настройка fnm пропущена"
+    echo ":: Настройка Node.js и corepack пропущена"
 fi
+
