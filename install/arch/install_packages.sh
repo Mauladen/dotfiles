@@ -110,12 +110,12 @@ packages_aur=(
   # Приложения
   vkteams-bin              # Мессенджер VK Teams
   google-chrome            # Браузер Google Chrome
-  claude-code              # TODO: уточнить - AI ассистент Claude Code
-  openai-codex-bin         # TODO: уточнить - интеграция OpenAI Codex
+  claude-code              # TODO: заполнить - AI ассистент Claude Code
+  openai-codex-bin         # TODO: заполнить - интеграция OpenAI Codex
 
   # Системные утилиты
   hunspell-ru              # Русская проверка орфографии для Hunspell
-  throne-bin               # TODO: уточнить - приложение throne
+  throne-bin               # VPN клиент
   wlogout                  # Меню выхода из системы для Wayland
 )
 
