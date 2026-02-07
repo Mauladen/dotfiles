@@ -3,120 +3,120 @@
 # -----------------------------------------------------
 
 packages=(
-  # Wayland support & libraries
-  qt5-wayland              # Qt5 Wayland platform plugin
-  qt6-wayland              # Qt6 Wayland platform plugin
-  gtk4                     # GTK4 library
-  wl-clipboard             # Command-line copy/paste utilities for Wayland
+  # Поддержка Wayland и библиотеки
+  qt5-wayland              # Плагин платформы Wayland для Qt5
+  qt6-wayland              # Плагин платформы Wayland для Qt6
+  gtk4                     # Библиотека GTK4
+  wl-clipboard             # Утилиты командной строки для копирования/вставки в Wayland
 
-  # Audio (PipeWire stack)
-  pipewire                 # Low-latency audio/video server
-  pipewire-alsa            # PipeWire ALSA plugin
-  pipewire-audio           # PipeWire audio daemon
-  pipewire-jack            # PipeWire JACK plugin
-  pipewire-pulse           # PipeWire PulseAudio replacement
-  wireplumber              # Session manager for PipeWire
+  # Аудио (стек PipeWire)
+  pipewire                 # Аудио/видео сервер с низкой задержкой
+  pipewire-alsa            # Плагин ALSA для PipeWire
+  pipewire-audio           # Аудио демон PipeWire
+  pipewire-jack            # Плагин JACK для PipeWire
+  pipewire-pulse           # Замена PulseAudio для PipeWire
+  wireplumber              # Менеджер сессий для PipeWire
 
-  # Network & Bluetooth
-  networkmanager           # Network management daemon
-  network-manager-applet   # NetworkManager panel applet
-  bluez                    # Bluetooth daemon
-  bluez-utils              # Bluetooth utilities
-  blueman                  # Bluetooth manager GUI
+  # Сеть и Bluetooth
+  networkmanager           # Демон управления сетью
+  network-manager-applet   # Апплет NetworkManager для панели
+  bluez                    # Демон Bluetooth
+  bluez-utils              # Утилиты Bluetooth
+  blueman                  # Графический менеджер Bluetooth
 
-  # Shell
-  zsh                      # Z shell
+  # Оболочка
+  zsh                      # Оболочка Z shell
 
-  # Window Manager & Desktop Environment
-  hyprland                 # Dynamic tiling Wayland compositor
-  hypridle                 # Idle manager for Hyprland
-  waybar                   # Wayland bar for Hyprland and Sway
-  rofi-wayland             # Application launcher for Wayland
-  hyprlock                 # Screen locker for Hyprland
+  # Оконный менеджер и окружение рабочего стола
+  hyprland                 # Динамический тайлинговый композитор Wayland
+  hypridle                 # Менеджер бездействия для Hyprland
+  waybar                   # Панель задач для Wayland (Hyprland, Sway)
+  rofi-wayland             # Запуск приложений для Wayland
+  hyprlock                 # Блокировщик экрана для Hyprland
 
-  # Terminal
-  ghostty                  # Modern terminal emulator
+  # Терминал
+  ghostty                  # Современный эмулятор терминала
 
-  # Notifications & Desktop integration
-  swaync                   # Notification center for Wayland
-  xdg-desktop-portal-hyprland # XDG desktop portal for Hyprland
-  xdg-desktop-portal-gtk   # XDG desktop portal for GTK
+  # Уведомления и интеграция рабочего стола
+  swaync                   # Центр уведомлений для Wayland
+  xdg-desktop-portal-hyprland # XDG портал для Hyprland
+  xdg-desktop-portal-gtk   # XDG портал для GTK
 
-  # Wallpaper & visual effects
-  swww                     # Efficient animated wallpaper daemon for Wayland
+  # Обои и визуальные эффекты
+  swww                     # Демон анимированных обоев для Wayland
 
-  # System information & monitoring
-  fastfetch                # Neofetch-like tool, faster and more accurate
-  btop                     # Resource monitor
+  # Системная информация и мониторинг
+  fastfetch                # Утилита вроде neofetch, но быстрее
+  btop                     # Мониторинг ресурсов системы
 
-  # Screen capture & screenshots
-  grim                     # Screenshot utility for Wayland
-  slurp                    # Selection tool for grim
-  swappy                   # Snapshot editing tool
-  wf-recorder              # Screen recorder for Wayland
-  imagemagick              # Image manipulation toolset
+  # Захват экрана и скриншоты
+  grim                     # Утилита скриншотов для Wayland
+  slurp                    # Инструмент выделения для grim
+  swappy                   # Редактор скриншотов
+  wf-recorder              # Запись экрана для Wayland
+  imagemagick              # Набор инструментов для работы с изображениями
 
-  # Audio control
-  pamixer                  # PulseAudio command-line mixer
-  pavucontrol              # PulseAudio volume control GUI
+  # Управление аудио
+  pamixer                  # Микшер PulseAudio для командной строки
+  pavucontrol              # Графическое управление громкостью PulseAudio
 
-  # File manager
-  thunar                   # Modern file manager for Xfce
-  gvfs                     # GNOME Virtual File System (backend for thunar)
-  thunar-archive-plugin    # Archive plugin for Thunar
-  file-roller              # Archive manager for GNOME
+  # Файловый менеджер
+  thunar                   # Современный файловый менеджер из Xfce
+  gvfs                     # Виртуальная файловая система GNOME (backend для thunar)
+  thunar-archive-plugin    # Плагин архивов для Thunar
+  file-roller              # Менеджер архивов из GNOME
 
-  # Fonts
-  ttf-jetbrains-mono       # JetBrains Mono font
-  ttf-jetbrains-mono-nerd  # JetBrains Mono with Nerd Font icons
-  noto-fonts-emoji        # Google Noto color emoji font
+  # Шрифты
+  ttf-jetbrains-mono       # Шрифт JetBrains Mono
+  ttf-jetbrains-mono-nerd  # JetBrains Mono с иконками Nerd Font
+  noto-fonts-emoji        # Цветные эмодзи шрифты Noto от Google
 
-  # Themes & appearance
-  tela-circle-icon-theme-dracula # Dracula icon theme
-  nwg-look                 # GTK3 settings editor for Wayland
-  kvantum                  # SVG-based theme engine for Qt
-  adw-gtk-theme            # Adwaita theme for GTK3 and GTK4
+  # Темы и оформление
+  tela-circle-icon-theme-dracula # Dracula иконки
+  nwg-look                 # Редактор настроек GTK3 для Wayland
+  kvantum                  # Движок тем на основе SVG для Qt
+  adw-gtk-theme            # Тема Adwaita для GTK3 и GTK4
 
-  # Applications
-  telegram-desktop         # Telegram messenger
-  qbittorrent              # BitTorrent client
-  obsidian                 # Note-taking application
-  zed                      # Code editor by Zed Industries
+  # Приложения
+  telegram-desktop         # Мессенджер Telegram
+  qbittorrent              # BitTorrent клиент
+  obsidian                 # Приложение для заметок
+  zed                      # Редактор кода от Zed Industries
 
-  # Shell utilities
-  eza                      # Modern replacement for ls
-  dex                      # Tool to execute applications from XDG desktop entries
-  tmux                     # Terminal multiplexer
-  fzf                      # Command-line fuzzy finder
-  zoxide                   # Smart cd command
-  atuin                    # Shell history manager
-  bat                      # cat clone with syntax highlighting
+  # Утилиты оболочки
+  eza                      # Современная замена для ls
+  dex                      # Инструмент для запуска приложений из .desktop файлов
+  tmux                     # Мультиплексор терминала
+  fzf                      # Нечёткий поиск для командной строки
+  zoxide                   # Умная команда cd
+  atuin                    # Менеджер истории оболочки
+  bat                      # Клон cat с подсветкой синтаксиса
 
-  # System utilities
-  hyprpolkitagent          # Polkit agent for Hyprland
-  pacman-contrib           # Helper scripts for pacman
+  # Системные утилиты
+  hyprpolkitagent          # Polkit агент для Hyprland
+  pacman-contrib           # Вспомогательные скрипты для pacman
 )
 
 packages_aur=(
-  # Themes & appearance
-  bibata-cursor-theme-bin  # Modern cursor theme
+  # Темы и оформление
+  bibata-cursor-theme-bin  # Современная тема курсоров
 
-  # Hyprland ecosystem
-  hyprland-preview-share-picker-git # Utility for sharing windows in Hyprland
+  # Экосистема Hyprland
+  hyprland-preview-share-picker-git # Утилита для шаринга окон в Hyprland
 
-  # Development tools
+  # Инструменты разработки
   fnm-bin                  # Fast Node Manager
 
-  # Applications
-  vkteams-bin              # VK Teams messenger
-  google-chrome            # Google Chrome browser
-  claude-code              # TODO: verify - Claude Code AI assistant
-  openai-codex-bin         # TODO: verify - OpenAI Codex integration
+  # Приложения
+  vkteams-bin              # Мессенджер VK Teams
+  google-chrome            # Браузер Google Chrome
+  claude-code              # TODO: уточнить - AI ассистент Claude Code
+  openai-codex-bin         # TODO: уточнить - интеграция OpenAI Codex
 
-  # System utilities
-  hunspell-ru              # Russian spell checker for Hunspell
-  throne-bin               # TODO: verify - throne application
-  wlogout                  # Logout menu for Wayland
+  # Системные утилиты
+  hunspell-ru              # Русская проверка орфографии для Hunspell
+  throne-bin               # TODO: уточнить - приложение throne
+  wlogout                  # Меню выхода из системы для Wayland
 )
 
 _installPackages "${packages[@]}"
