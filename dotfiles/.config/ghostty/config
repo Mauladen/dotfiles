@@ -1,0 +1,15 @@
+gtk-titlebar = false
+
+theme = Catppuccin Mocha
+
+confirm-close-surface=false
+
+copy-on-select = true
+
+window-padding-x = 5
+window-padding-y = 15
+
+command=sh ~/.config/ghostty/scripts/ghostty.sh
+
+font-family = "JetBrainsMono Nerd Font"
+font-size = 16

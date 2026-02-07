@@ -1,0 +1,7 @@
+[user]
+  email = d.antoshkin@itmo.dev
+  signingkey = E9E01F06524B7C80
+
+[commit]
+  gpgSign = true
+

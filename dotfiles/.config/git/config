@@ -1,0 +1,130 @@
+[user]
+  email = twertrue@yandex.ru
+  name = Danil Antoshkin
+
+[commit]
+    template = ~/.config/git/template
+    verbose = true  # add more context to commit messages
+
+[core]
+    autocrlf = input  # keep newlines as in input
+    compression = 9  # trade cpu for network
+    fsync = none
+    whitespace = error  # threat incorrect whitespace as errors
+    preloadindex = true  # preload index for faster status
+    editor = zeditor --wait
+
+[advice]  # disable advices
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHints = false
+
+[blame]
+    coloring = highlightRecent
+    date = relative
+
+[diff]
+    context = 3  # less context in diffs
+    renames = copies  # detect copies as renames in diffs
+    interHunkContext = 10  # merge near hunks in diffs
+
+[init]
+    defaultBranch = master
+
+[log]
+    abbrevCommit = true  # short commits
+    graphColors = blue,yellow,cyan,magenta,green,red
+
+[status]
+    branch = true
+    short = true
+    showStash = true
+    showUntrackedFiles = all  # show individual untracked files
+
+[pager]
+    branch = false  # no need to use pager for git branch
+    tag = false
+    diff = diff-so-fancy | $PAGER  # diff-so-fancy as diff pager
+
+[push]
+    autoSetupRemote = true  # easier to push new branches
+    default = current  # push only current branch by default
+    followTags = true  # push also tags
+    gpgSign = false  # my remotes doesn't support sign pushes
+
+[pull]
+    rebase = true
+    default = current
+
+[submodule]
+    fetchJobs = 16
+
+[rebase]
+    autoStash = true
+    missingCommitsCheck = warn  # warn if rebasing with missing commits
+
+[pack]
+    threads = 0  # use all available threads
+    windowMemory = 1g  # use 1g of memory for pack window
+    packSizeLimit = 1g  # max size of a packfile
+
+# Integrity
+[transfer]
+    fsckObjects = true
+
+[receive]
+    fsckObjects = true
+
+[fetch]
+    fsckObjects = true
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    sort = -taggerdate
+
+# Colors
+[color "blame"]
+    highlightRecent = black bold,1 year ago,white,1 month ago,default,7 days ago,blue
+
+[color "branch"]
+    current  = magenta
+    local    = default
+    remote   = yellow
+    upstream = green
+    plain    = blue
+
+[color "diff"]
+    meta       = black bold
+    frag       = magenta
+    context    = white
+    whitespace = yellow reverse
+    old        = red
+
+[color.decorate]
+    HEAD = red
+    branch = blue
+    tag = yellow
+    remoteBranch = magenta
+
+[interactive]
+    diffFilter = diff-so-fancy --patch
+    singlekey = true
+
+# Third-party: diff-so-fancy
+[diff-so-fancy]
+    markEmptyLines = false
+
+# The contents of this file are included only for GitLab.com URLs
+[includeIf "hasconfig:remote.*.url:git@itmo-uir.gitlab.yandexcloud.net:*/**"]
+    path = ~/.config/git/itmo-config
+[credential "https://itmo-uir.gitlab.yandexcloud.net"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

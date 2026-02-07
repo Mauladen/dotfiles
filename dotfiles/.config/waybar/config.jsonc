@@ -1,0 +1,168 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 20,
+  "modules-left": [
+    "custom/powermenu",
+    "custom/menu",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "idle_inhibitor",
+    "clock",
+    "custom/updates",
+    "custom/notification"
+  ],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "temperature",
+    "pulseaudio",
+    "pulseaudio#microphone",
+    "hyprland/language",
+    "custom/reload_configs"
+  ],
+  "temperature": {
+    "thermal-zone": 1,
+    "format": "",
+    "format-alt-click": "click-right",
+    "format-alt": " {temperatureC}°C",
+    "critical-threshold": 70,
+    "format-critical": " {temperatureC}°C"
+  },
+  "clock": {
+    "format": "{:%H:%M}  ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "on-scroll": 1,
+      "format": {
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰛐",
+      "deactivated": "󰛑"
+    },
+    "tooltip": false,
+    "on-click-right": "hyprlock"
+  },
+  "hyprland/language": {
+    "format": " {}",
+    "format-en": "English",
+    "format-ru": "Русский",
+    "keyboard-name": "zmk-project-eh-velvet-v3-ui-keyboard",
+    "on-click": "hyprctl switchxkblayout zmk-project-eh-velvet-v3-ui-keyboard next"
+  },
+  "custom/powermenu": {
+    "format": "",
+    "on-click": "wlogout -b 6 -c 0 -r 0 -m 0 --protocol layer-shell",
+    "escape": true,
+    "tooltip": false
+  },
+  "custom/menu": {
+    "format": "󱗼",
+    "on-click": "sh ~/.config/hyprdots/scripts/launcher.sh",
+    "escape": true,
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "",
+    "max-length": 10,
+    "format-alt-click": "click-right",
+    "format-alt": " {usage}%",
+    "on-click": "ghostty -e btop"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "",
+    "on-click": "sh ~/.config/waybar/scripts/volume.sh --toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "sh ~/.config/waybar/scripts/volume.sh --inc",
+    "on-scroll-down": "sh ~/.config/waybar/scripts/volume.sh --dec",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "tooltip": true,
+    "tooltip-format": "{icon} {volume}%"
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "on-click": "sh ~/.config/waybar/scripts/volume.sh --toggle-mic",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "sh ~/.config/waybar/scripts/volume.sh --mic-inc",
+    "on-scroll-down": "sh ~/.config/waybar/scripts/volume.sh --mic-dec",
+    "scroll-step": 5,
+    "tooltip": true,
+    "tooltip-format": " {volume}%"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "custom/updates": {
+    "format": "{}",
+    "exec": "sh ~/.config/waybar/scripts/update-sys.sh",
+    "on-click": "sh ~/.config/waybar/scripts/update-sys.sh update",
+    "interval": 300,
+    "tooltip": true
+  },
+  "custom/reload_configs": {
+    "format": "󰐾",
+    "on-click": "sh ~/.config/waybar/scripts/restart-configs.sh",
+    "tooltip": false
+  },
+  "custom/notification": {
+        "escape": true,
+        "exec": "swaync-client -swb",
+        "exec-if": "which swaync-client",
+        "format": "{icon}",
+        "format-icons": {
+            "dnd-inhibited-none": "󰂚<sup></sup>",
+            "dnd-inhibited-notification": "󰂚<span foreground='#f38ba8'><sup></sup></span>",
+            "dnd-none": "󰂛",
+            "dnd-notification": "󰂛<span foreground='#f38ba8'><sup></sup></span>",
+            "inhibited-none": "󰂚<sup>󰜺</sup>",
+            "inhibited-notification": "󰵙<span foreground='#f38ba8'><sup></sup></span>",
+            "none": "󰂚<span color='#6c7086'><sup></sup></span>",
+            "notification": "󰂚<span foreground='#f38ba8'><sup></sup></span>"
+        },
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+        "return-type": "json",
+        "tooltip": false
+    }
+}

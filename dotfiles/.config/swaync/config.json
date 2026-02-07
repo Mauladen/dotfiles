@@ -1,0 +1,69 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "bottom",
+  "layer": "top",
+  "cssPriority": "user",
+  "control-center-margin-top": 0,
+  "control-center-margin-bottom": 200,
+  "control-center-margin-right": 0,
+  "control-center-margin-left": 0,
+  "notification-icon-size": 100,
+  "notification-body-image-height": 400,
+  "notification-body-image-width": 300,
+  "timeout": 5,
+  "timeout-low": 3,
+  "timeout-critical": 7,
+  "fit-to-screen": true,
+  "control-center-width": 400,
+  "control-center-height": 400,
+  "notification-window-width": 500,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 200,
+  "hide-on-clear": true,
+  "hide-on-action": true,
+  "widgets": ["title", "dnd", "notifications", "buttons-grid"],
+  "widget-config": {
+    "title": {
+      "text": "Уведомления",
+      "clear-all-button": true,
+      "button-text": "Очистить"
+    },
+    "dnd": {
+      "text": "Не беспокоить"
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰐥",
+          "command": "systemctl poweroff"
+        },
+        {
+          "label": "󰜉",
+          "command": "systemctl reboot"
+        },
+        {
+          "label": "󰌾",
+          "command": "hyprlock"
+        },
+        {
+          "label": "󰍃",
+          "command": "hyprctl dispatch exit 0"
+        },
+        {
+          "label": "󰏥",
+          "command": "systemctl suspend"
+        },
+        {
+          "label": "󰛳",
+          "command": "nm-connection-editor"
+        },
+        {
+          "label": "󰂯",
+          "command": "blueman-manager"
+        }
+      ]
+    }
+  }
+}

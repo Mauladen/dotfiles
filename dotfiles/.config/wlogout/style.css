@@ -1,0 +1,102 @@
+* {
+  background-image: none;
+  font-size: 16px;
+}
+
+window {
+  background-color: rgba(30, 30, 46, 0.90);
+}
+
+button {
+  color: #cdd6f4;
+  background-color: #313244;
+  outline-style: none;
+  border: none;
+  border-width: 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  border-radius: 0px;
+  box-shadow: none;
+  text-shadow: none;
+  animation: gradient_f 20s ease-in infinite;
+}
+
+button:focus {
+  background-color: #45475a;
+  background-size: 30%;
+}
+
+button:hover {
+  background-color: #585b70;
+  background-size: 40%;
+  border-radius: 50px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
+}
+
+button:hover#lock {
+  border-radius: 50px;
+  margin : 331px 0px 331px 403px;
+}
+
+button:hover#logout {
+  border-radius: 50px;
+  margin : 331px 0px 331px 0px;
+}
+
+button:hover#suspend {
+  border-radius: 50px;
+  margin : 331px 0px 331px 0px;
+}
+
+button:hover#shutdown {
+  border-radius: 50px;
+  margin : 331px 0px 331px 0px;
+}
+
+button:hover#hibernate {
+  border-radius: 50px;
+  margin: 331px 0px 331px 0px;
+}
+
+button:hover#reboot {
+  border-radius: 50px;
+  margin: 331px 403px 331px 0px;
+}
+
+#lock {
+  background-image: image(url("icons/lock.svg"));
+  border-radius: 80px 0px 0px 80px;
+  margin: 403px 0px 403px 403px;
+}
+
+#logout {
+  background-image: image(url("icons/logout.svg"));
+  border-radius: 0px 0px 0px 0px;
+  margin : 403px 0px 403px 0px;
+}
+
+#suspend {
+  background-image: image(url("icons/suspend.svg"));
+  border-radius: 0px 0px 0px 0px;
+  margin : 403px 0px 403px 0px;
+}
+
+#shutdown {
+  background-image: image(url("icons/shutdown.svg"));
+  border-radius: 0px 0px 0px 0px;
+  margin : 403px 0px 403px 0px;
+}
+
+#hibernate {
+  background-image: image(url("icons/hibernate.svg"));
+  border-radius: 0px 0px 0px 0px;
+  margin : 403px 0px 403px 0px;
+}
+
+#reboot {
+  background-image: image(url("icons/reboot.svg"));
+  border-radius: 0px 80px 80px 0px;
+  margin : 403px 403px 403px 0px;
+}
