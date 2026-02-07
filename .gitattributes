@@ -1,0 +1,13 @@
+# Git-crypt configuration
+
+# SSH keys
+secrets/ssh/** filter=git-crypt diff=git-crypt
+
+# GPG keys
+secrets/gpg/** filter=git-crypt diff=git-crypt
+
+# Docker credentials
+secrets/docker/** filter=git-crypt diff=git-crypt
+
+# Exclude .gitattributes from encryption
+.gitattributes !filter !diff
