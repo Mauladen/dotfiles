@@ -35,7 +35,8 @@ stow -R -t ~ .
 ## Code Style & Conventions
 
 - **Shell scripts**: Bash with shebang `#!/bin/bash`
-- **Comments**: Russian language comments in scripts
+- **Comments**: Russian language comments required in all scripts and code
+- **Package documentation**: Each package in `install_packages.sh` must have inline comment in Russian explaining its purpose; organize packages into logical groups with blank lines
 - **Configuration**: Modular approach - each component in separate sourced file
 - **Commit messages**: Free format, English language
 - **Stow**: Use GNU Stow for managing symlinks from `dotfiles/` to `~/.config/`
