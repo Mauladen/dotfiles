@@ -23,8 +23,10 @@ _installPackages() {
     # echo "All pacman packages are already installed.";
     return
   fi
-  printf ":: Пакет не найден :\n%s\n" "${toInstall[@]}"
-  sudo pacman -S --noconfirm "${toInstall[@]}"
+  echo ":: Установка pacman пакетов..."
+  for pkg in "${toInstall[@]}"; do
+    sudo pacman -S --noconfirm "${pkg}" || echo ":: Ошибка установки ${pkg}"
+  done
 }
 
 _installPackagesYay() {
@@ -39,8 +41,10 @@ _installPackagesYay() {
   if [[ "${toInstall[@]}" == "" ]]; then
     return
   fi
-  printf ":: Пакет не найден :\n%s\n" "${toInstall[@]}"
-  yay -S --noconfirm "${toInstall[@]}"
+  echo ":: Установка AUR пакетов..."
+  for pkg in "${toInstall[@]}"; do
+    yay -S --noconfirm "${pkg}" || echo ":: Ошибка установки ${pkg}"
+  done
 }
 
 # Install Yay
