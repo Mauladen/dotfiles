@@ -12,6 +12,7 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
+    "custom/recording",
     "idle_inhibitor",
     "clock",
     "custom/updates",
@@ -144,6 +145,13 @@
     "format": "󰐾",
     "on-click": "sh ~/.config/waybar/scripts/restart-configs.sh",
     "tooltip": false
+  },
+  "custom/recording": {
+    "exec": "sh ~/.config/waybar/scripts/recording.sh",
+    "on-click": "sh ~/.config/hyprdots/scripts/record.sh",
+    "interval": 1,
+    "return-type": "json",
+    "tooltip": true
   },
   "custom/notification": {
         "escape": true,

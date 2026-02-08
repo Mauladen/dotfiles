@@ -48,6 +48,7 @@ tooltip label {
 #custom-menu,
 #custom-powermenu,
 #custom-notification,
+#custom-recording,
 #window,
 #cpu,
 #disk,
@@ -80,4 +81,17 @@ tooltip label {
   border-radius: 10px;
   margin-left: 0px;
   margin-right: 0px;
+}
+
+#custom-recording.recording {
+  color: #f38ba8;
+  background: rgba(243, 139, 168, 0.2);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  to {
+    color: #fab387;
+    background: rgba(250, 179, 135, 0.2);
+  }
 }
