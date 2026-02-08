@@ -1,16 +1,21 @@
 # Project Overview
 
-Personal Arch Linux dotfiles repository with automated setup script for Hyprland-based desktop environment. Provides a complete workflow to install and configure essential packages, shell utilities, window manager, and personal configuration files through GNU Stow.
+Personal Arch Linux dotfiles repository with automated setup script for Hyprland-based
+desktop environment. Provides a complete workflow to install and configure essential
+packages, shell utilities, window manager, and personal configuration files through
+GNU Stow.
 
 ## Repository Structure
 
-- `install.sh` - Main entry point that orchestrates the entire installation process
-- `install/` - Installation scripts and configurations
-  - `arch/` - Arch Linux-specific package management helpers
-  - `includes/` - Modular setup components (Docker, ZSH, Tmux, Fnm, Ly, services, copy)
-- `dotfiles/` - Configuration files managed by GNU Stow
-  - `.config/` - Application configurations (Hyprland, Waybar, Zed, Ghostty, etc.)
-  - `.zshrc`, `.gtkrc-2.0` - Shell and GTK configuration
+- `install.sh` – Main entry point that orchestrates the entire installation process
+- `install/` – Installation scripts and configurations
+  - `arch/` – Arch Linux-specific package management helpers
+  - `includes/` – Modular setup components (Docker, ZSH, Tmux, Fnm, Ly, services, copy)
+- `dotfiles/` – Configuration files managed by GNU Stow
+  - `.config/` – Application configurations (Hypr, Waybar, Zed, Ghostty, etc.)
+  - `.config/zshrc/` – Modular zsh config (init, customization, aliases, autostart)
+  - `.config/zshrc/env.example` – Environment variables template (proxy, etc.)
+- `.gitignore` – Excludes local configs with personal data
 
 ## Build & Development Commands
 
@@ -26,20 +31,24 @@ cd dotfiles
 cd dotfiles/dotfiles
 stow -t ~ .
 
-# Update existing dotfiles
+# Update existing dotfiles after changes
 stow -R -t ~ .
-```
 
-> TODO: Add commands for testing individual install components
+# Setup environment variables (after first install)
+cp ~/.config/zshrc/env.example ~/.config/zshrc/env
+# Edit ~/.config/zshrc/env with your values
+```
 
 ## Code Style & Conventions
 
 - **Shell scripts**: Bash with shebang `#!/bin/bash`
 - **Comments**: Russian language comments required in all scripts and code
-- **Package documentation**: Each package in `install_packages.sh` must have inline comment in Russian explaining its purpose; organize packages into logical groups with blank lines
-- **Configuration**: Modular approach - each component in separate sourced file
+- **Package documentation**: Each package in `install_packages.sh` must have inline
+  comment in Russian explaining its purpose; organize packages into logical groups
+- **Configuration**: Modular approach – each component in separate sourced file
 - **Commit messages**: Free format, English language
 - **Stow**: Use GNU Stow for managing symlinks from `dotfiles/` to `~/.config/`
+- **Personal data**: Never commit secrets; use `env.example` template and `.gitignore`
 
 ## Architecture Notes
 
@@ -71,12 +80,16 @@ graph TD
 
 **Components:**
 
-1. **library.sh** - Package management helpers (`_isInstalled`, `_installPackages`, `_installPackagesYay`, `_installYay`)
-2. **install_required.sh** - Installs base tools (gum, stow, git) and yay AUR helper
-3. **install_packages.sh** - Installs full package list (desktop environment, utilities, fonts, apps)
-4. **Component includes** - Optional interactive setup for Docker, ZSH, Tmux, Fnm, Ly
-5. **services.sh** - Enables NetworkManager and bluetooth services
-6. **copy.sh** - Uses GNU Stow to symlink dotfiles from `dotfiles/` to home directory
+1. **library.sh** – Package management helpers:
+   - `_isInstalled` – Check if package is installed using `pacman -Qi`
+   - `_installPackages` – Install pacman packages
+   - `_installPackagesYay` – Install AUR packages via yay
+   - `_installYay` – Install yay AUR helper
+2. **install_required.sh** – Installs base tools (gum, stow, git) and yay AUR helper
+3. **install_packages.sh** – Installs full package list (desktop, utilities, fonts, apps)
+4. **Component includes** – Optional interactive setup for Docker, ZSH, Tmux, Fnm, Ly
+5. **services.sh** – Enables NetworkManager and bluetooth services
+6. **copy.sh** – Uses GNU Stow to symlink dotfiles to home directory
 
 **Data Flow:**
 
@@ -90,38 +103,13 @@ graph TD
 8. Stows dotfiles
 9. Prompts for reboot
 
-## Testing Strategy
-
-> TODO: No testing framework currently defined
-
-**Manual Testing:**
-
-```bash
-# Verify stow operation
-ls -la ~/.config/hyprland  # Should be symlinked
-ls -la ~/.config/zshrc     # Should be symlinked
-
-# Check installed packages
-pacman -Qs hyprland
-pacman -Qs zsh
-pacman -Qs docker
-
-# Verify services
-systemctl status NetworkManager
-systemctl status bluetooth
-```
-
-> TODO: Add CI/CD pipeline for testing installation on fresh Arch VM
-
 ## Security & Compliance
 
-- **Secrets handling**: No secrets stored in repository
+- **Secrets handling**: No secrets stored in repository; use `env.example` template
 - **Dependency scanning**: Manual review via pacman/yay package management
 - **Package sources**: Official Arch repositories + AUR (reviewed packages)
 - **Privilege escalation**: Uses sudo for package installation and service management
 - **License**: Personal dotfiles repository
-
-> TODO: Add automated dependency vulnerability scanning
 
 ## Agent Guardrails
 
@@ -134,7 +122,7 @@ systemctl status bluetooth
 
 ## Extensibility Hooks
 
-- **Environment variables**: None currently used
+- **Environment variables**: Use `~/.config/zshrc/env` for proxy and personal settings
 - **Component toggles**: Each `includes/` script can be commented out in `install.sh`
 - **Package lists**: Modify `packages` array in `install/arch/install_packages.sh`
 - **AUR packages**: Modify `packages_aur` array in `install/arch/install_packages.sh`
@@ -143,9 +131,8 @@ systemctl status bluetooth
 
 ## Further Reading
 
-> TODO: Add detailed documentation links when created
-
-- **Arch Wiki**: https://wiki.archlinux.org/
-- **Hyprland Wiki**: https://wiki.hyprland.org/
-- **GNU Stow**: https://www.gnu.org/software/stow/
-- **Zsh plugins**: zsh-completions, zsh-autocomplete, zsh-autosuggestions, zsh-syntax-highlighting, fast-syntax-highlighting
+- [Arch Wiki](https://wiki.archlinux.org/)
+- [Hyprland Wiki](https://wiki.hyprland.org/)
+- [GNU Stow](https://www.gnu.org/software/stow/)
+- Zsh plugins: zsh-completions, zsh-autocomplete, zsh-autosuggestions,
+  zsh-syntax-highlighting, fast-syntax-highlighting
