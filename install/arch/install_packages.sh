@@ -110,8 +110,8 @@ packages_aur=(
   # Приложения
   vkteams-bin              # Мессенджер VK Teams
   google-chrome            # Браузер Google Chrome
-  claude-code              # TODO: заполнить - AI ассистент Claude Code
-  openai-codex-bin         # TODO: заполнить - интеграция OpenAI Codex
+  claude-code              # Агентный ИИ-инструмент для программирования в терминале от Anthropic
+  openai-codex-bin         # ИИ-агент для программирования от OpenAI, запускается локально в терминале
 
   # Системные утилиты
   hunspell-ru              # Русская проверка орфографии для Hunspell
