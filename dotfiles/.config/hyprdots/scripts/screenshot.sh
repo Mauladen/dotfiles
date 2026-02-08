@@ -4,7 +4,7 @@ selection=$(printf "Весь экран\nВыделенная область\nА
 
 generate_filename() {
   local dir="$HOME/Изображения"
-  mkdir -p "$dir"
+  mkdir -p "$dir" || { notify-send "Ошибка" "Не удалось создать директорию $dir"; exit 1; }
   echo "$dir/screenshot_$(date +%Y%m%d_%H%M%S).png"
 }
 
@@ -18,22 +18,22 @@ send_notification() {
 case "$selection" in
 "Весь экран")
   file_path=$(generate_filename)
-  grim "$file_path"
-  swappy -f "$file_path" -o "$file_path"
+  grim "$file_path" || { notify-send "Ошибка" "Не удалось создать скриншот"; exit 1; }
+  swappy -f "$file_path" -o "$file_path" || { notify-send "Ошибка" "Не удалось отредактировать скриншот"; rm -f "$file_path"; exit 1; }
   ;;
 "Выделенная область")
   file_path=$(generate_filename)
-  grim -g "$(slurp)" "$file_path"
-  swappy -f "$file_path" -o "$file_path"
+  grim -g "$(slurp)" "$file_path" || { notify-send "Ошибка" "Не удалось создать скриншот"; exit 1; }
+  swappy -f "$file_path" -o "$file_path" || { notify-send "Ошибка" "Не удалось отредактировать скриншот"; rm -f "$file_path"; exit 1; }
   ;;
 "Активный монитор")
   active_monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | "\(.x),\(.y) \(.width)x\(.height)"')
   if [ -n "$active_monitor" ]; then
     file_path=$(generate_filename)
-    grim -g "$active_monitor" "$file_path"
-    swappy -f "$file_path" -o "$file_path"
+    grim -g "$active_monitor" "$file_path" || { notify-send "Ошибка" "Не удалось создать скриншот"; exit 1; }
+    swappy -f "$file_path" -o "$file_path" || { notify-send "Ошибка" "Не удалось отредактировать скриншот"; rm -f "$file_path"; exit 1; }
   else
-    notify-send "Не найден активный монитор"
+    notify-send "Ошибка" "Не найден активный монитор"
     exit 1
   fi
   ;;
