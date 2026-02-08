@@ -14,9 +14,5 @@ export FZF_DEFAULT_OPTS=" \
 --multi"
 export EDITOR="zeditor"
 
-# HTTP proxy
-export HTTP_PROXY=http://127.0.0.1:2080
-export HTTPS_PROXY="$HTTP_PROXY"
-
-# Bypass proxy for local server
-export NO_PROXY=127.0.0.1,localhost,::1
+# Переменные окружения (прокси и т.д.)
+[[ -f ~/.config/zshrc/env ]] && source ~/.config/zshrc/env
