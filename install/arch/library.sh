@@ -1,19 +1,13 @@
+# Проверка, установлен ли пакет (точное совпадение по имени)
 _isInstalled() {
-  package="$1"
-  check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")"
-  if [ -n "${check}" ]; then
-    echo 0
-    return
-  fi
-  echo 1
-  return
+  pacman -Qi "$1" &>/dev/null
 }
 
-# Install required packages
+# Установка pacman пакетов
 _installPackages() {
   toInstall=()
   for pkg; do
-    if [[ $(_isInstalled "${pkg}") == 0 ]]; then
+    if _isInstalled "${pkg}"; then
       echo ":: ${pkg} уже установлен."
       continue
     fi
@@ -32,7 +26,7 @@ _installPackages() {
 _installPackagesYay() {
   toInstall=()
   for pkg; do
-    if [[ $(_isInstalled "${pkg}") == 0 ]]; then
+    if _isInstalled "${pkg}"; then
       echo ":: ${pkg} уже установлен."
       continue
     fi
@@ -47,9 +41,9 @@ _installPackagesYay() {
   done
 }
 
-# Install Yay
+# Установка Yay
 _installYay() {
-  if sudo pacman -Qs yay >/dev/null; then
+  if _isInstalled yay; then
     echo ":: yay уже установлен!"
   else
     echo ":: yay не найден. Ничего страшного, сейчас установлю!"
