@@ -2,11 +2,11 @@
 # Переменные окружения (пример)
 # -----------------------------------------------------
 # Скопируй этот файл и заполни своими значениями:
-# cp ~/.config/zshrc/env.example ~/.config/zshrc/env
+# cp ~/.config/zshrc/10-env.example ~/.config/zshrc/10-env
 
-# HTTP proxy (если нужен)
+# HTTP прокси
 export HTTP_PROXY=http://127.0.0.1:2080
 export HTTPS_PROXY="$HTTP_PROXY"
 
-# Bypass proxy for local server
+# Обход прокси для localhost
 export NO_PROXY=127.0.0.1,localhost,::1

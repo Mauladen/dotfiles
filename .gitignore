@@ -1,2 +1,2 @@
 # Локальные конфиги (содержат персональные данные)
-dotfiles/.config/zshrc/env
+dotfiles/.config/zshrc/10-env

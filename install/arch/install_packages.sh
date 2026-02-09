@@ -104,9 +104,6 @@ packages_aur=(
   # Экосистема Hyprland
   hyprland-preview-share-picker-git # Утилита для шаринга окон в Hyprland
 
-  # Инструменты разработки
-  fnm-bin                  # Fast Node Manager
-
   # Приложения
   vkteams-bin              # Мессенджер VK Teams
   google-chrome            # Браузер Google Chrome
