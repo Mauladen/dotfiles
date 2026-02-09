@@ -91,6 +91,7 @@ packages=(
   zoxide                   # Умная команда cd
   atuin                    # Менеджер истории оболочки
   bat                      # Клон cat с подсветкой синтаксиса
+  jq                       # Command-line JSON processor
 
   # Системные утилиты
   hyprpolkitagent          # Polkit агент для Hyprland
