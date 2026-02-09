@@ -31,7 +31,7 @@ packages=(
   hyprland                 # Динамический тайлинговый композитор Wayland
   hypridle                 # Менеджер бездействия для Hyprland
   waybar                   # Панель задач для Wayland (Hyprland, Sway)
-  rofi-wayland             # Запуск приложений для Wayland
+  walker                   # Запуск приложений для Wayland
   hyprlock                 # Блокировщик экрана для Hyprland
 
   # Терминал

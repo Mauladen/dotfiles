@@ -1,6 +1,7 @@
 #!/bin/bash
 
-selection=$(printf "Весь экран\nВыделенная область\nАктивный монитор" | rofi -dmenu -i -p "Создание скриншота" -theme ~/.config/rofi/screenshot.rasi)
+# Меню выбора типа скриншота через walker dmenu
+selection=$(printf "Весь экран\nВыделенная область\nАктивный монитор" | walker --dmenu)
 
 generate_filename() {
   local dir="$HOME/Изображения"

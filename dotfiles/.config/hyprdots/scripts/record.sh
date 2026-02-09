@@ -12,7 +12,7 @@ if pidof wf-recorder >/dev/null; then
   exit 0
 fi
 
-selection=$(printf "Весь экран\nВыделенная область\nАктивный монитор" | rofi -dmenu -i -p "Меню записи экрана" -theme ~/.config/rofi/record.rasi)
+selection=$(printf "Весь экран\nВыделенная область\nАктивный монитор" | walker --dmenu)
 
 generate_filename() {
   local dir="$HOME/Видео"
