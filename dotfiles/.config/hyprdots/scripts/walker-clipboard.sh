@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Launch the Walker application launcher while ensuring that it's data provider (called elephant) is running first.
+# Walker имеет встроенный clipboard провайдер с префиксом ":"
+# Запускаем walker с предустановленным префиксом
 
 # Ensure elephant is running before launching walker
 if ! pgrep -x elephant > /dev/null; then
@@ -12,4 +13,4 @@ if ! pgrep -f "walker --gapplication-service" > /dev/null; then
   setsid walker --gapplication-service &
 fi
 
-exec walker --width 644 --maxheight 300 --minheight 300 "$@"
+exec walker --width 644 --maxheight 300 --minheight 300 --prefix ":"
