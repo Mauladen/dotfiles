@@ -91,7 +91,7 @@ packages=(
   zoxide                   # Умная команда cd
   atuin                    # Менеджер истории оболочки
   bat                      # Клон cat с подсветкой синтаксиса
-  jq                       # Command-line JSON processor
+  jq                       # Обработчик JSON для командной строки
 
   # Системные утилиты
   hyprpolkitagent          # Polkit агент для Hyprland
@@ -115,7 +115,7 @@ packages_aur=(
   hunspell-ru              # Русская проверка орфографии для Hunspell
   throne-bin               # VPN клиент
   wlogout                  # Меню выхода из системы для Wayland
-  wayfreeze-git            # Tool to freeze the screen of a Wayland compositor
+  wayfreeze-git            # Утилита для заморозки экрана Wayland композитора
 )
 
 _installPackages "${packages[@]}"
