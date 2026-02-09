@@ -67,6 +67,17 @@ tooltip label {
   border: 0px;
 }
 
+#custom-screenrecording-indicator {
+  min-width: 12px;
+  margin-left: 5px;
+  font-size: 10px;
+  padding-bottom: 1px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+
 #temperature.critical {
   color: #e92d4d;
 }

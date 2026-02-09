@@ -15,7 +15,8 @@
     "idle_inhibitor",
     "clock",
     "custom/updates",
-    "custom/notification"
+    "custom/notification",
+    "custom/screenrecording-indicator"
   ],
   "modules-right": [
     "tray",
@@ -72,6 +73,12 @@
     "on-click": "sh ~/.config/hyprdots/scripts/launcher.sh",
     "escape": true,
     "tooltip": false
+  },
+  "custom/screenrecording-indicator": {
+    "on-click": "sh ~/.config/hyprdots/scripts/cmd-screenrecord.sh",
+    "exec": "sh ~/.config/waybar/indicators/screen-recording.sh",
+    "signal": 8,
+    "return-type": "json"
   },
   "hyprland/workspaces": {
     "disable-scroll": true,

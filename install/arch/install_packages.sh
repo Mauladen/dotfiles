@@ -53,7 +53,7 @@ packages=(
   grim                     # Утилита скриншотов для Wayland
   slurp                    # Инструмент выделения для grim
   swappy                   # Редактор скриншотов
-  wf-recorder              # Запись экрана для Wayland
+  gpu-screen-recorder      # Запись экрана
   imagemagick              # Набор инструментов для работы с изображениями
 
   # Управление аудио
@@ -114,6 +114,7 @@ packages_aur=(
   hunspell-ru              # Русская проверка орфографии для Hunspell
   throne-bin               # VPN клиент
   wlogout                  # Меню выхода из системы для Wayland
+  wayfreeze-git            # Tool to freeze the screen of a Wayland compositor
 )
 
 _installPackages "${packages[@]}"
