@@ -12,6 +12,9 @@ fi
 
 pkill slurp && exit 0
 
+# Требуется чтобы Rofi не попал на скриншот
+sleep 1
+
 MODE="${1:-smart}"
 PROCESSING="${2:-slurp}"
 
