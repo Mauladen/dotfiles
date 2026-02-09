@@ -1,1 +1,15 @@
-walker
+#!/bin/bash
+
+# Launch the Walker application launcher while ensuring that it's data provider (called elephant) is running first.
+
+# Ensure elephant is running before launching walker
+if ! pgrep -x elephant > /dev/null; then
+  setsid elephant &
+fi
+
+# Ensure walker service is running
+if ! pgrep -f "walker --gapplication-service" > /dev/null; then
+  setsid walker --gapplication-service &
+fi
+
+exec walker --width 644 --maxheight 300 --minheight 300 "$@"

@@ -6,9 +6,19 @@
 SCRIPT_DIR="$(dirname "$0")"
 CMD_RECORD="$SCRIPT_DIR/cmd-screenrecord.sh"
 
+# Ensure elephant is running before launching walker
+if ! pgrep -x elephant > /dev/null; then
+  setsid elephant &
+fi
+
+# Ensure walker service is running
+if ! pgrep -f "walker --gapplication-service" > /dev/null; then
+  setsid walker --gapplication-service &
+fi
+
 # Если запись уже идёт — предлагаем остановить
 if pgrep -f "^gpu-screen-recorder" >/dev/null; then
-  selection=$(printf "⏹ Остановить запись" | walker --dmenu)
+  selection=$(printf "⏹ Остановить запись" | walker --dmenu --width 644 --maxheight 300 --minheight 300)
   case "$selection" in
     "⏹ Остановить запись")
       sh "$CMD_RECORD" --stop-recording
@@ -18,7 +28,7 @@ if pgrep -f "^gpu-screen-recorder" >/dev/null; then
 fi
 
 # Меню с опциями записи через walker dmenu
-selection=$(printf "🎥 Начать запись\n🎤 С микрофоном\n🔊 С звуком системы\n🎤🔊 С микрофоном и звуком\n📷 С вебкамерой\n🎤📷 С микрофоном и камерой" | walker --dmenu)
+selection=$(printf "🎥 Начать запись\n🎤 С микрофоном\n🔊 С звуком системы\n🎤🔊 С микрофоном и звуком\n📷 С вебкамерой\n🎤📷 С микрофоном и камерой" | walker --dmenu --width 644 --maxheight 300 --minheight 300)
 
 case "$selection" in
   "🎥 Начать запись")
