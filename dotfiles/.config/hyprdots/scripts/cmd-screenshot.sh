@@ -1,16 +1,18 @@
 #!/bin/bash
 
-# Take a screenshot of the whole screen, a specific window, or a user-drawn region.
-# Saves to ~/Pictures by default, but that can be changed via OMARCHY_SCREENSHOT_DIR or XDG_PICTURES_DIR ENVs.
+# Делает скриншот всего экрана, конкретного окна или выделенной пользователем области.
+# По умолчанию сохраняет в ~/Pictures, но путь можно изменить через переменную XDG_PICTURES_DIR.
 
-OUTPUT_DIR="${OMARCHY_SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}}"
+OUTPUT_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}"
 
 if [[ ! -d "$OUTPUT_DIR" ]]; then
-  notify-send "Screenshot directory does not exist: $OUTPUT_DIR" -u critical -t 3000
+  notify-send "Каталог для скриншотов не существует: $OUTPUT_DIR" -u critical -t 3000
   exit 1
 fi
 
 pkill slurp && exit 0
+
+sleep 1
 
 MODE="${1:-smart}"
 PROCESSING="${2:-slurp}"
@@ -21,7 +23,7 @@ get_rectangles() {
   hyprctl clients -j | jq -r --arg ws "$active_workspace" '.[] | select(.workspace.id == ($ws | tonumber)) | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"'
 }
 
-# Select based on mode
+# Выбор логики в зависимости от режима
 case "$MODE" in
   region)
     wayfreeze & PID=$!
@@ -45,8 +47,8 @@ case "$MODE" in
     SELECTION=$(echo "$RECTS" | slurp 2>/dev/null)
     kill $PID 2>/dev/null
 
-    # If the selction area is L * W < 20, we'll assume you were trying to select whichever
-    # window or output it was inside of to prevent accidental 2px snapshots
+    # Если площадь выделения (ширина * высота) < 20, считаем, что пользователь хотел выбрать
+    # окно или монитор, в пределах которого был клик, чтобы избежать случайных скриншотов в пару пикселей
     if [[ "$SELECTION" =~ ^([0-9]+),([0-9]+)[[:space:]]([0-9]+)x([0-9]+)$ ]]; then
       if (( ${BASH_REMATCH[3]} * ${BASH_REMATCH[4]} < 20 )); then
         click_x="${BASH_REMATCH[1]}"

@@ -3,8 +3,6 @@
   "theme": "Aura Dark",
   "theme_overrides": {
     "Aura Dark": {
-      "editor.document_highlight.read_background": "#00000000",
-      "editor.document_highlight.write_background": "#00000000",
       "border.variant": "#15141C",
       "border": "#15141C",
       "title_bar.background": "#15141C",
@@ -12,7 +10,7 @@
       "panel.focused_border": "#4E466E",
       "tab_bar.background": "#15141C",
       "players": [
-        {           
+        {
           "cursor": "#BD9DFF",
         },
       ],
@@ -80,7 +78,7 @@
   "buffer_line_height": {
     "custom": 2,
   },
-  "agent_buffer_font_size": 20,
+  "agent_buffer_font_size": 18,
   "multi_cursor_modifier": "cmd_or_ctrl",
   "cursor_shape": "block",
   "cursor_blink": false,
@@ -132,6 +130,6 @@
       "language_servers": ["scss-lsp"],
     },
   },
-  "proxy": "http://127.0.0.1:2080",
+  "proxy": "http://172.19.0.1:10809",
   "base_keymap": "VSCode",
 }

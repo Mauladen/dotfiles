@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Start and stop a screenrecording, which will be saved to ~/Videos by default.
-# Alternative location can be set via OMARCHY_SCREENRECORD_DIR or XDG_VIDEOS_DIR ENVs.
+# Запускает и останавливает запись экрана, которая по умолчанию сохраняется в ~/Videos.
+# Альтернативный путь можно задать через переменную XDG_VIDEOS_DIR.
 
-OUTPUT_DIR="${OMARCHY_SCREENRECORD_DIR:-${XDG_VIDEOS_DIR:-$HOME/Videos}}"
+OUTPUT_DIR="${XDG_VIDEOS_DIR:-$HOME/Videos}"
 
 if [[ ! -d "$OUTPUT_DIR" ]]; then
-  notify-send "Screen recording directory does not exist: $OUTPUT_DIR" -u critical -t 3000
+  notify-send "Каталог для записи экрана не существует: $OUTPUT_DIR" -u critical -t 3000
   exit 1
 fi
 
@@ -33,22 +33,22 @@ cleanup_webcam() {
 start_webcam_overlay() {
   cleanup_webcam
 
-  # Auto-detect first available webcam if none specified
+  # Автоматически определяем первую доступную веб-камеру, если устройство не указано
   if [[ -z "$WEBCAM_DEVICE" ]]; then
     WEBCAM_DEVICE=$(v4l2-ctl --list-devices 2>/dev/null | grep -m1 "^\s*/dev/video" | tr -d '\t')
     if [[ -z "$WEBCAM_DEVICE" ]]; then
-      notify-send "No webcam devices found" -u critical -t 3000
+      notify-send "Устройства веб-камеры не найдены" -u critical -t 3000
       return 1
     fi
   fi
 
-  # Get monitor scale
+  # Получаем масштаб монитора
   local scale=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .scale')
 
-  # Target width (base 360px, scaled to monitor)
+  # Целевая ширина (база 360px, масштабируется под монитор)
   local target_width=$(awk "BEGIN {printf \"%.0f\", 360 * $scale}")
 
-  # Try preferred 16:9 resolutions in order, use first available
+  # Пробуем предпочтительные разрешения 16:9 по порядку и берем первое доступное
   local preferred_resolutions=("640x360" "1280x720" "1920x1080")
   local video_size_arg=""
   local available_formats=$(v4l2-ctl --list-formats-ext -d "$WEBCAM_DEVICE" 2>/dev/null)
@@ -78,7 +78,7 @@ start_screenrecording() {
   [[ "$DESKTOP_AUDIO" == "true" ]] && audio_devices+="default_output"
 
   if [[ "$MICROPHONE_AUDIO" == "true" ]]; then
-    # Merge audio tracks into one - separate tracks only play one at a time in most players
+    # Объединяем аудиодорожки в одну: отдельные дорожки во многих плеерах проигрываются по одной
     [[ -n "$audio_devices" ]] && audio_devices+="|"
     audio_devices+="default_input"
   fi
@@ -90,9 +90,9 @@ start_screenrecording() {
 }
 
 stop_screenrecording() {
-  pkill -SIGINT -f "^gpu-screen-recorder"  # SIGINT required to save video properly
+  pkill -SIGINT -f "^gpu-screen-recorder"  # SIGINT нужен для корректного сохранения видео
 
-  # Wait a maximum of 5 seconds to finish before hard killing
+  # Ждем завершения максимум 5 секунд перед принудительным завершением
   local count=0
   while pgrep -f "^gpu-screen-recorder" >/dev/null && [ $count -lt 50 ]; do
     sleep 0.1
@@ -102,10 +102,10 @@ stop_screenrecording() {
   if pgrep -f "^gpu-screen-recorder" >/dev/null; then
     pkill -9 -f "^gpu-screen-recorder"
     cleanup_webcam
-    notify-send "Screen recording error" "Recording process had to be force-killed. Video may be corrupted." -u critical -t 5000
+    notify-send "Ошибка записи экрана" "Процесс записи пришлось завершить принудительно. Видео может быть повреждено." -u critical -t 5000
   else
     cleanup_webcam
-    notify-send "Screen recording saved to $OUTPUT_DIR" -t 2000
+    notify-send "Запись экрана сохранена в $OUTPUT_DIR" -t 2000
   fi
   toggle_screenrecording_indicator
 }

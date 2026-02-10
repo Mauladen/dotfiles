@@ -31,7 +31,6 @@ packages=(
   hyprland                 # Динамический тайлинговый композитор Wayland
   hypridle                 # Менеджер бездействия для Hyprland
   waybar                   # Панель задач для Wayland (Hyprland, Sway)
-  rofi-wayland             # Запуск приложений для Wayland
   hyprlock                 # Блокировщик экрана для Hyprland
 
   # Терминал
@@ -116,6 +115,8 @@ packages_aur=(
   throne-bin               # VPN клиент
   wlogout                  # Меню выхода из системы для Wayland
   wayfreeze-git            # Утилита для заморозки экрана Wayland композитора
+  walker-bin               # Запуск приложений для Wayland
+  elephant-bin             # general purpose datasource and executor
 )
 
 _installPackages "${packages[@]}"
