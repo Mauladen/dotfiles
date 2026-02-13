@@ -1,6 +1,0 @@
-# HTTP прокси
-export HTTP_PROXY=http://172.19.0.1:10809
-export HTTPS_PROXY="$HTTP_PROXY"
-
-# Обход прокси для localhost
-export NO_PROXY=127.0.0.1,localhost,::1
