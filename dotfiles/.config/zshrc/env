@@ -4,5 +4,3 @@ export HTTPS_PROXY="$HTTP_PROXY"
 
 # Обход прокси для localhost
 export NO_PROXY=127.0.0.1,localhost,::1
-
-export NEXUS_TOKEN=bmV4dXNfdmlld2VyOjByczQ4RWhDRVdpaTZy
